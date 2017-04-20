@@ -1,21 +1,21 @@
 var gulp = require('gulp'),
-  sass = require('gulp-sass'),
-  autoprefixer = require('gulp-autoprefixer'),
-  browserSync = require('browser-sync').create(),
-  uglify = require('gulp-uglify'),
-  minify = require('gulp-minify-html'),
-  imgmin = require('gulp-imagemin'),
-  concat = require('gulp-concat'),
-  jshint = require('gulp-jshint'),
-  babel = require('gulp-babel'),
-  panini = require('panini'),
-  sitemap = require('gulp-sitemap'),
-  replace = require('gulp-replace'),
-  browserify = require('gulp-browserify'),
-  source = require('vinyl-source-stream'),
-  buffer = require('vinyl-buffer'),
-  sourcemaps = require('gulp-sourcemaps'),
-  filenames = require("gulp-filenames");
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    browserSync = require('browser-sync').create(),
+    uglify = require('gulp-uglify'),
+    minify = require('gulp-minify-html'),
+    imgmin = require('gulp-imagemin'),
+    concat = require('gulp-concat'),
+    jshint = require('gulp-jshint'),
+    babel = require('gulp-babel'),
+    panini = require('panini'),
+    sitemap = require('gulp-sitemap'),
+    replace = require('gulp-replace'),
+    browserify = require('gulp-browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    sourcemaps = require('gulp-sourcemaps'),
+    filenames = require("gulp-filenames");
 
 var jsSources = ['./components/js/*.js']; //may need to dictate specific concatenation order
 var sassSources = ['./components/sass/*.scss'];
@@ -28,25 +28,25 @@ Automatically generate service worker with all assets
 ***************/
 
 gulp.task('serviceWorker', function(callback) {
-  var path = require('path');
-  var swPrecache = require('sw-precache');
-  var rootDir = './builds/dev';
+    var path = require('path');
+    var swPrecache = require('sw-precache');
+    var rootDir = './builds/dev';
 
-  swPrecache.write(path.join(rootDir, 'sw.js'), {
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
-    stripPrefix: rootDir
-  }, callback);
+    swPrecache.write(path.join(rootDir, 'sw.js'), {
+        staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+        stripPrefix: rootDir
+    }, callback);
 });
 
 gulp.task('serviceWorkerDist', function(callback) {
-  var path = require('path');
-  var swPrecache = require('sw-precache');
-  var rootDir = './builds/dist';
+    var path = require('path');
+    var swPrecache = require('sw-precache');
+    var rootDir = './builds/dist';
 
-  swPrecache.write(path.join(rootDir, 'sw.js'), {
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
-    stripPrefix: rootDir
-  }, callback);
+    swPrecache.write(path.join(rootDir, 'sw.js'), {
+        staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+        stripPrefix: rootDir
+    }, callback);
 });
 
 /**************
@@ -70,16 +70,16 @@ gulp.task('browser-sync', function() {
 Inject push notification scripts into builds/dev and builds/dist sw.js
 
 ***************/
-// Also need to add a script to copy manifest.json to build folders
+
 gulp.task('sw', function() {
-  return gulp.src('./components/sw.js')
-  .pipe(replace('[]','[' + filenames.get("all", "relative") + ']'))
-  .pipe(gulp.dest('./builds/dev'))
+    return gulp.src('./components/sw.js')
+        .pipe(replace('[]', '[' + filenames.get("all", "relative") + ']'))
+        .pipe(gulp.dest('./builds/dev'))
 });
 
 gulp.task('swDist', function() {
-  return gulp.src('./components/sw.js')
-  .pipe(gulp.dest('./builds/dist'))
+    return gulp.src('./components/sw.js')
+        .pipe(gulp.dest('./builds/dist'))
 });
 
 /***************
@@ -89,13 +89,13 @@ Move manifest.json to build folders
 ***************/
 
 gulp.task('manifest', function() {
-  return gulp.src('./components/manifest.json')
-  .pipe(gulp.dest('./builds/dev'))
+    return gulp.src('./components/manifest.json')
+        .pipe(gulp.dest('./builds/dev'))
 });
 
 gulp.task('manifestDist', function() {
-  return gulp.src('./components/manifest.json')
-  .pipe(gulp.dest('./builds/dist'))
+    return gulp.src('./components/manifest.json')
+        .pipe(gulp.dest('./builds/dist'))
 });
 
 /**************
@@ -105,32 +105,29 @@ Lint, concatenate, transpile to es5 and sourcemap js files
 **************/
 
 gulp.task('js', function() {
-  return gulp.src(jsSources)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(concat('scripts.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(browserify({
-      insertGlobals: true
-    }))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./builds/dev/js'))
+    return gulp.src(jsSources)
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(concat('scripts.js'))
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./builds/dev/js'))
 });
 
 gulp.task('jsDist', function() {
-  return gulp.src(jsSources)
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(concat('scripts.js'))
-    .pipe(browserify({
-      insertGlobals: true
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('builds/dist/js'))
+    return gulp.src(jsSources)
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(concat('scripts.js'))
+        .pipe(browserify({
+            insertGlobals: true
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest('builds/dist/js'))
 });
 
 /**************
@@ -203,8 +200,8 @@ gulp.task('paniniDist', function() {
             helpers: './components/helpers/',
             data: './components/data/'
         }))
-        
-        .pipe(gulp.dest('./builds/dist'));
+
+    .pipe(gulp.dest('./builds/dist'));
 });
 
 /*************
@@ -231,9 +228,9 @@ Watch all files for changes and update the browser
 *************/
 
 gulp.task('watch', function() {
-  gulp.watch(jsSources, ['js']).on('change', browserSync.reload);
-  gulp.watch(sassSources, ['sass']).on('change', browserSync.reload);
-  gulp.watch(htmlSources, ['panini']).on('change', browserSync.reload);
+    gulp.watch(jsSources, ['js']).on('change', browserSync.reload);
+    gulp.watch(sassSources, ['sass']).on('change', browserSync.reload);
+    gulp.watch(htmlSources, ['panini']).on('change', browserSync.reload);
 });
 
 /**************

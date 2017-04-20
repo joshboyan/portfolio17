@@ -8,72 +8,309 @@ for the dist build */
 @import "grid";
 @import "variables";
 @import "mixins";
-
 //mobile styles
-
 html {}
 
 body {
-
-    header{
-
+    a {
+        color: $dark;
+    }
+    a:visited,
+    a:hover {
+        color: $primary;
+    }
+    button {
+        cursor: pointer;
+        background-color: $dark;
+        border: 2px outset $primary;
+        &:hover {
+            background-color: $primary;
+        }
+    }
+    header {
         nav {}
     }
-
-    main {}
-
+    main {
+        width: 50%;
+        margin-left: 25%;
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            width: 300px;
+            height: 485px; //485
+            background-color: $divider;
+            color: $text;
+            border: 2px outset $accent;
+            box-shadow: 10px 15px 30px $secondary;
+            h3 {
+                font: 2em/1 serif;
+                text-align: center;
+                margin-top: .5em;
+            } //h3
+            .img {
+                position: relative;
+                overflow: hidden;
+                width: 185px;
+                height: 185px;
+                margin: -25px 57.5px;
+                cursor: pointer;
+                border: 2px double $primary;
+                background-color: $primary;
+                img {
+                    max-width: 100%;
+                    transition: all 0.3s;
+                }
+                &:hover img {
+                    transform: scale(1.1);
+                }
+            } // .img
+            button {
+                position: relative;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                margin-top: -2.5px;
+                margin-left: 217.5px;
+                font: bold 3em/.5 serif;
+                outline-style: none;
+                svg {
+                    width: 50px;
+                    height: 50px;
+                    stroke: $icons;
+                    stroke-width: 3;
+                } // svg
+            } // button
+            h4 {
+                margin-top: -.25em;
+                text-align: center;
+                font: 1.5em/1 serif;
+                color: $secondary;
+            } // h4
+            ul {
+                margin-top: -1em;
+            }
+            li {
+                padding-bottom: .25em;
+                list-style-type: none;
+                &:after {
+                    display: block;
+                    content: "";
+                    width: 70%;
+                    height: 1px;
+                    margin: .25em 5%;
+                    background-color: $secondary;
+                }
+                &:first-child {
+                    padding-top: 0;
+                    margin-top: -.25em;
+                }
+                &:last-child {
+                    position: relative;
+                    margin-left: -20%;
+                    text-align: center;
+                    &:after {
+                        display: none;
+                    }
+                }
+            } // li
+        } // .portfolio-item
+        aside {
+            display: none;
+            i {
+                position: absolute;
+                cursor: pointer;
+                font: 50px/1 sans-serif;
+                color: $icons;
+                &:first-child {
+                    top: 50vh;
+                    left: 5%
+                }
+                &:nth-of-type(2) {
+                    top: 5vh;
+                    right: 5%;
+                }
+                &:nth-of-type(3) {
+                    top: 50vh;
+                    right: 5%;
+                }
+            }
+            img {
+                width: 40%;
+                margin: 10px 30%;
+            }
+            div {
+                text-align: center;
+            }
+            a {
+                display: inline-block;
+                font-weight: bold;
+                color: $icons;
+            }
+        }
+        .show-aside {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .9);
+        }
+    } // main
+    .js {
+        .portfolio-item {
+            animation: portfolio-item-close .25s ease-in-out forwards;
+            button {
+                animation: button-out .1s ease-in-out forwards;
+                @keyframes button-out {
+                    from {
+                        transform: scale(1.1);
+                        box-shadow: 3px 5px 12px $secondary;
+                    }
+                    to {
+                        transform: scale(1);
+                        box-shadow: initial;
+                    }
+                } // keyframes button-out
+                .turn-svg {
+                    animation: turn-svg .25s ease-in-out forwards;
+                    @keyframes turn-svg {
+                        from {
+                            transform: rotate(0deg);
+                        }
+                        to {
+                            transform: rotate(45deg) translateY(2px);
+                        }
+                    } // keyframe turn-svg
+                } // .turn-svg
+                svg {
+                    animation: svg .25s ease-in-out forwards;
+                    @keyframes svg {
+                        from {
+                            transform: rotate(45deg) translate(-2px, -2px);
+                        }
+                        to {
+                            transform: rotate(0deg) translate(-2px, -2px);
+                        }
+                    } // svg
+                    .first-path {
+                        animation: first-path .5s ease-in-out forwards;
+                        @keyframes first-path {
+                            0% {
+                                transform: rotate(-45deg) translate(-25px, 10px);
+                            }
+                            100% {
+                                transform: rotate(0) translateY(0);
+                            }
+                        } //keyframes first-path
+                    } // first-path
+                    .turn-first-path {
+                        animation: turn-first-path .5s ease-in-out forwards;
+                        @keyframes turn-first-path {
+                            0% {
+                                transform: rotate(0) translateY(0);
+                            }
+                            100% {
+                                transform: rotate(-45deg) translate(-25px, 8px);
+                            }
+                        } //keyframes turn-first-path
+                    } // svg
+                    .second-path {
+                        animation: second-path .5s ease-in-out forwards;
+                        @keyframes second-path {
+                            0% {
+                                transform: rotate(45deg) translate(14px, -20px);
+                            }
+                            100% {
+                                transform: rotate(0) translateY(0);
+                            }
+                        } // keyframes turn-second-path
+                    } // .turn-second-path 
+                    .turn-second-path {
+                        animation: turn-second-path .5s ease-in-out forwards;
+                        @keyframes turn-second-path {
+                            0% {
+                                transform: rotate(0) translateY(0);
+                            }
+                            100% {
+                                transform: rotate(45deg) translate(12px, -20px);
+                            }
+                        } // keyframes turn-second-path
+                    } // .turn-second-path          
+                } // svg
+            } // button
+            .button-hover {
+                animation: button-hover .1s ease-in-out forwards;
+                @keyframes button-hover {
+                    from {
+                        transform: scale(1);
+                        box-shadow: initial;
+                    }
+                    to {
+                        transform: scale(1.1);
+                        box-shadow: 3px 5px 6px $secondary;
+                    }
+                } // keyframes button-hover
+            } // .button-hover
+        } // .portfolio-item
+        @keyframes portfolio-item-close {
+            from {
+                height: 485px;
+            }
+            to {
+                height: 300px;
+            }
+        } // portfolio-item-close
+        .portfolio-item-open {
+            animation: portfolio-item-open .25s ease-in-out forwards;
+        } // .portfolio-item-open
+        @keyframes portfolio-item-open {
+            from {
+                height: 300px;
+            }
+            to {
+                height: 485px;
+            }
+        } // keyframes portfolio-item-open
+    } // .js
     footer {}
 }
 
 //tablet styles
 @media only screen and (min-width: 768px) {
-
-html {}
-
-body {
-
-    header{
-
-        nav {}
+    html {}
+    body {
+        header {
+            nav {}
+        }
+        main {}
+        footer {}
     }
-
-    main {}
-    
-    footer {}
-}    
-}   
+}
 
 //notebook styles
 @media only screen and (min-width: 960px) {
-
-html {}
-
-body {
-
-    header{
-
-        nav {}
+    html {}
+    body {
+        header {
+            nav {}
+        }
+        main {}
+        footer {}
     }
-
-    main {}
-    
-    footer {}
 }
-}    
+
 //large screen styles
 @media only screen and (min-width: 1140px) {
-
-html {}
-
-body {
-
-    header{
-
-        nav {}
+    html {}
+    body {
+        header {
+            nav {}
+        }
+        main {}
+        footer {}
     }
-
-    main {}
-    
-    footer {}
-}
 }
