@@ -1,0 +1,45 @@
+{
+  "name": "minframe",
+  "version": "1.0.0",
+  "homepage": "http://joshboyan.com/minframe/index.html",
+  "description": "minframe is a modern HTML5, mobile-first front-end framework built with Sass and Gulp on a 12 column responsive grid. The framework boasts all of the modern accessiblility features and tools developers use in builds but none of the style bloat.",
+  "main": "index.js",
+  "keywords": [
+    "responsive",
+    "framework",
+    "mobile-first",
+    "build-tools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshboyan/minframe.git"
+  },
+  "author": "Josh Boyan",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "browser-sync": "2.14.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-filenames": "^4.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-shell": "^0.5.2",
+    "gulp-sitemap": "^4.2.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3",
+    "panini": "^1.3.0",
+    "run-sequence": "^1.2.2",
+    "sw-precache": "^5.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

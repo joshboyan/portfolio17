@@ -1,0 +1,40 @@
+/***************
+
+This file is what lets your app or website icon be added to mobile 
+homescreens and creates a splash screen to simulate native app 
+experience.
+
+All comments must be deleted for it to work.
+Validate at: https://manifest-validator.appspot.com/
+
+***************/
+{
+  "name": "SVG Weather",
+  "short_name": "SVG Weather",
+  "icons": [{
+        "src": "img/icon-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }, {
+        "src": "img/apple-touch-icon.png",
+        "sizes": "152x152",
+        "type": "image/png"
+      }, {
+        "src": "img/ms-touch-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }, {
+        "src": "img/chrome-touch-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+    {
+      "src": "img/large-icon-252x252.png",
+      "sizes": "252x252",
+      "type": "image/png"
+    }],
+  "start_url": "/?utm_source=homescreen", // Distinguishes if user got to app from homescreen icon or URL
+  "display": "standalone", // Determines if browser navigation is shown - standalone or fullscreen
+  "background_color": "#303F9F", // Passes background color to browser before CSS is parsed
+  "theme_color": "#303F9F" // Sets custom color for the device search bar
+}

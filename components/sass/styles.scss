@@ -1,0 +1,79 @@
+/* All other Sass style sheets are imported here. You can add as many
+as makes sense for your project as long as you follow the 
+naming convention "_filename.scss". They will be concantenated, compiled 
+to CSS3 and linted for the dev build and minified with comments removed 
+for the dist build */
+
+@import "normalize";
+@import "grid";
+@import "variables";
+@import "mixins";
+
+//mobile styles
+
+html {}
+
+body {
+
+    header{
+
+        nav {}
+    }
+
+    main {}
+
+    footer {}
+}
+
+//tablet styles
+@media only screen and (min-width: 768px) {
+
+html {}
+
+body {
+
+    header{
+
+        nav {}
+    }
+
+    main {}
+    
+    footer {}
+}    
+}   
+
+//notebook styles
+@media only screen and (min-width: 960px) {
+
+html {}
+
+body {
+
+    header{
+
+        nav {}
+    }
+
+    main {}
+    
+    footer {}
+}
+}    
+//large screen styles
+@media only screen and (min-width: 1140px) {
+
+html {}
+
+body {
+
+    header{
+
+        nav {}
+    }
+
+    main {}
+    
+    footer {}
+}
+}
