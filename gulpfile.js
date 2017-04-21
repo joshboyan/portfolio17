@@ -239,6 +239,6 @@ Default commands
 
 **************/
 
-gulp.task('default', ['js', 'sass', 'imgmin', 'manifest', 'panini', 'serviceWorker', 'browser-sync', 'watch']);
+gulp.task('default', ['js', 'sass', 'imgmin', 'panini', 'browser-sync', 'watch']);
 
 gulp.task('dist', ['sassDist', 'jsDist', 'swDist', 'paniniDist', 'imgminDist', 'manifestDist', 'serviceWorkerDist', 'sitemap']);

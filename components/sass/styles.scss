@@ -8,6 +8,19 @@ for the dist build */
 @import "grid";
 @import "variables";
 @import "mixins";
+
+//For Screen Readers
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
 //mobile styles
 html {}
 
@@ -27,12 +40,12 @@ body {
             background-color: $primary;
         }
     }
+
     header {
         nav {}
     }
     main {
-        width: 50%;
-        margin-left: 25%;
+        
         .portfolio-item {
             position: relative;
             overflow: hidden;
@@ -111,6 +124,9 @@ body {
                     &:after {
                         display: none;
                     }
+                }
+                a {
+                    padding-right: 1em;
                 }
             } // li
         } // .portfolio-item
